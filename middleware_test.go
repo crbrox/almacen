@@ -160,7 +160,6 @@ func TestMiddlewareEcho(t *testing.T) {
 
 }
 
-
 type testingNotJSONableObject struct{}
 
 func (testingNotJSONableObject) MarshalJSON() ([]byte, error) {
@@ -171,14 +170,14 @@ func TestMiddlewareInvalidJSONInResponse(t *testing.T) {
 	var err error
 	SetStore(NewMemStore())
 
-   notJSONFunc := func(ctx *context, w http.ResponseWriter, req *http.Request) (interface{}, error) {
+	notJSONFunc := func(ctx *context, w http.ResponseWriter, req *http.Request) (interface{}, error) {
 		return testingNotJSONableObject{}, nil
 	}
 	recorder := httptest.NewRecorder()
 
 	h := H(notJSONFunc)
 
-	request, err := http.NewRequest("GET", "ruta",  &bytes.Buffer{})
+	request, err := http.NewRequest("GET", "ruta", &bytes.Buffer{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -197,7 +196,7 @@ func TestMiddlewareInvalidJSONInResponse(t *testing.T) {
 }
 
 func TestMiddlewareErrorProcessing(t *testing.T) {
-	const errText =  "a error from f"
+	const errText = "a error from f"
 	var err error
 	SetStore(NewMemStore())
 
@@ -208,7 +207,7 @@ func TestMiddlewareErrorProcessing(t *testing.T) {
 
 	h := H(errFunc)
 
-	request, err := http.NewRequest("GET", "ruta",  &bytes.Buffer{})
+	request, err := http.NewRequest("GET", "ruta", &bytes.Buffer{})
 	if err != nil {
 		t.Fatal(err)
 	}

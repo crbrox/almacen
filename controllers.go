@@ -130,5 +130,5 @@ func UpdateField(ctx *context, w http.ResponseWriter, req *http.Request) (interf
 }
 
 func cookField(rawField string) string {
-	return  strings.Replace(strings.Trim(rawField, "/"), "/", ".", -1)
+	return strings.Replace(strings.Trim(rawField, "/"), "/", ".", -1)
 }

@@ -71,7 +71,7 @@ func H(f func(ctx *context, w http.ResponseWriter, req *http.Request) (interface
 			err = json.NewEncoder(w).Encode(obj)
 			if err != nil {
 				ctx.Infof("error encoding response: %v", err)
-				respondErr(w,  &Error{message: "json encoding: " + err.Error(), statusCode: http.StatusInternalServerError})
+				respondErr(w, &Error{message: "json encoding: " + err.Error(), statusCode: http.StatusInternalServerError})
 			}
 			return
 		}

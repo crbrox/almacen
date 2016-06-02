@@ -7,7 +7,7 @@ import (
 )
 
 type Config struct {
-	Address string
+	Address  string
 	MongoURL string
 }
 

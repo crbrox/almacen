@@ -94,9 +94,9 @@ func (*MongoEntityStore) FindField(ctx *context, collection, id, field string) (
 	*/
 	err := ctx.session.DB("").C(collection).
 		Pipe([]bson.M{
-		{"$match": bson.M{"_id": id}},
-		{"$project": bson.M{resultKey: "$" + field, "_id": false}},
-	}).One(&result)
+			{"$match": bson.M{"_id": id}},
+			{"$project": bson.M{resultKey: "$" + field, "_id": false}},
+		}).One(&result)
 	if err != nil {
 		return nil, err
 	}
